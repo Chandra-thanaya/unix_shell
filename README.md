@@ -29,9 +29,30 @@ A simple UNIX Shell built in C++ to explore how command-line interpreters work i
 ## Project Structure
 
 ```
-.
-├── shell.cpp
-└── README.md
+Unix-Shell/
+│
+├── src/
+│   ├── main.cpp
+│   ├── parser.cpp
+│   ├── parser.h
+│   ├── executor.cpp
+│   ├── executor.h
+│   ├── builtin.cpp
+│   ├── builtin.h
+│   ├── history.cpp
+│   ├── history.h
+│   ├── redirect.cpp
+│   ├── redirect.h
+│   ├── pipeline.cpp
+│   ├── pipeline.h
+│   ├── signals.cpp
+│   ├── signals.h
+│   ├── custom.cpp
+│   └── custom.h
+│
+├── Makefile
+├── README.md
+└── .gitignore
 ```
 
 ## Compilation
