@@ -1,116 +1,201 @@
-# unix_shell
 # UNIX Shell in C++
 
-A simple UNIX Shell built in C++ to explore how command-line interpreters work internally. This project recreates core shell functionalities using POSIX system calls, providing hands-on experience with process management, command execution, file handling, and inter-process communication.
+A custom UNIX Shell built in C++ to understand the internals of command-line interpreters and strengthen UNIX system programming concepts. The shell recreates core functionalities of a UNIX shell using POSIX system calls, including process creation, command execution, file redirection, pipelines, signal handling, and built-in commands.
+
+---
 
 ## Features
 
-* Execute Linux commands
-* Built-in commands:
+- Execute Linux commands
+- Built-in commands
+  - `cd`
+  - `pwd`
+  - `history`
+  - `help`
+  - `clear`
+  - `exit`
+- Custom commands
+  - `say`
+  - `display`
+  - `calendar`
+  - `open`
+- Input redirection (`<`)
+- Output redirection (`>`)
+- Append redirection (`>>`)
+- Pipeline support (`|`)
+- Background process execution (`&`)
+- Signal handling (`SIGINT`, `SIGCHLD`)
+- Command history
 
-  * `cd`
-  * `pwd`
-  * `history`
-  * `exit`
-* Process creation using `fork()`
-* Command execution using `execvp()`
-* Input redirection (`<`)
-* Output redirection (`>`, `>>`)
-* Pipeline support (`|`)
-* Signal handling (`Ctrl + C`)
-* Command history
+---
 
-## Technologies Used
+## Tech Stack
 
-* C++
-* POSIX System Calls
-* Linux / UNIX Environment
+- **Language:** C++
+- **Platform:** Linux / UNIX
+- **Concepts:** POSIX System Calls, Process Management, Inter-Process Communication (IPC)
+
+---
+
+## POSIX APIs Used
+
+- `fork()`
+- `execvp()`
+- `waitpid()`
+- `pipe()`
+- `dup2()`
+- `open()`
+- `close()`
+- `chdir()`
+- `getcwd()`
+- `signal()`
+
+---
 
 ## Project Structure
 
-```
-Unix-Shell/
-│
-├── src/
-│   ├── main.cpp
-│   ├── parser.cpp
-│   ├── parser.h
-│   ├── executor.cpp
-│   ├── executor.h
-│   ├── builtin.cpp
-│   ├── builtin.h
-│   ├── history.cpp
-│   ├── history.h
-│   ├── redirect.cpp
-│   ├── redirect.h
-│   ├── pipeline.cpp
-│   ├── pipeline.h
-│   ├── signals.cpp
-│   ├── signals.h
-│   ├── custom.cpp
-│   └── custom.h
+```text
+UNIX-Shell/
 │
 ├── Makefile
 ├── README.md
-└── .gitignore
+├── .gitignore
+│
+└── src/
+    ├── main.cpp
+    ├── parser.cpp
+    ├── parser.h
+    ├── executor.cpp
+    ├── executor.h
+    ├── pipeline.cpp
+    ├── pipeline.h
+    ├── redirect.cpp
+    ├── redirect.h
+    ├── builtin.cpp
+    ├── builtin.h
+    ├── history.cpp
+    ├── history.h
+    ├── signals.cpp
+    ├── signals.h
+    ├── custom.cpp
+    └── custom.h
 ```
 
-## Compilation
+---
+
+## Build
 
 ```bash
-g++ shell.cpp -o shell
+make
 ```
 
-## Running the Shell
+or
 
 ```bash
-./shell
+g++ -Wall -Wextra -std=c++17 \
+src/main.cpp \
+src/parser.cpp \
+src/executor.cpp \
+src/pipeline.cpp \
+src/redirect.cpp \
+src/history.cpp \
+src/builtin.cpp \
+src/signals.cpp \
+src/custom.cpp \
+-o NeoShell
 ```
+
+---
+
+## Run
+
+```bash
+./NeoShell
+```
+
+---
 
 ## Example Commands
 
+### Execute Commands
+
 ```bash
-pwd
-
 ls -l
-
-cd Desktop
-
-cat file.txt
-
-cat file.txt | grep hello
-
-sort < numbers.txt
-
-ls > output.txt
-
-echo "Hello World" >> output.txt
-
-history
-
-exit
+pwd
+mkdir Demo
 ```
 
-## Concepts Covered
+### Built-in Commands
 
-* Process Management
-* Command Parsing
-* File Descriptors
-* Input/Output Redirection
-* Pipes and Inter-Process Communication
-* Signal Handling
-* POSIX System Programming
+```bash
+cd Documents
+history
+help
+clear
+```
 
-## Future Improvements
+### Redirection
 
-* Background process execution (`&`)
-* Multiple pipeline support
-* Environment variable expansion
-* Auto-completion
-* Arrow key history navigation
-* Job control
-* Custom shell prompt
+```bash
+ls > files.txt
+cat < files.txt
+echo Hello >> files.txt
+```
+
+### Pipelines
+
+```bash
+cat file.txt | grep error
+ls | sort
+ps aux | grep chrome
+```
+
+### Background Process
+
+```bash
+sleep 10 &
+```
+
+### Custom Commands
+
+```bash
+say Hello World
+display notes.txt
+calendar 7 2026
+open report.pdf
+```
+
+---
 
 ## Learning Outcomes
 
-Building this project provided practical experience with UNIX internals and POSIX APIs, including process creation, command execution, redirection, and signal handling. It also strengthened my understanding of how a shell interacts with the operating system to manage processes and execute user commands.
+This project provided hands-on experience with:
+
+- UNIX Shell Architecture
+- Process Creation and Management
+- Inter-Process Communication using Pipes
+- File Descriptor Manipulation
+- Input/Output Redirection
+- Signal Handling
+- Command Parsing
+- Modular Software Design
+- POSIX System Programming
+
+---
+
+## Future Improvements
+
+- Tab completion
+- Environment variable expansion
+- Persistent command history
+- Job control (`jobs`, `fg`, `bg`)
+- Command aliases
+- Auto-complete using `readline`
+- Support for quoted strings and escape characters
+- Improved error handling
+
+---
+
+## License
+
+This project is intended for educational and learning purposes.
