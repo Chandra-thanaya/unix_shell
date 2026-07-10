@@ -196,6 +196,6 @@ This project provided hands-on experience with:
 
 ---
 
-## License
+## 
 
-This project is intended for educational and learning purposes.
+Happy Learning
