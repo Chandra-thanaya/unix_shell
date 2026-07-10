@@ -1,4 +1,4 @@
-# UNIX Shell in C++
+# UNIX Shell in C++ by Chandra Thanaya
 
 A custom UNIX Shell built in C++ to understand the internals of command-line interpreters and strengthen UNIX system programming concepts. The shell recreates core functionalities of a UNIX shell using POSIX system calls, including process creation, command execution, file redirection, pipelines, signal handling, and built-in commands.
 
